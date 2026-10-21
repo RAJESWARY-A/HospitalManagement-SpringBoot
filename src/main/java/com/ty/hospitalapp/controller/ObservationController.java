@@ -1,0 +1,61 @@
+package com.ty.hospitalapp.controller;
+
+import java.util.List;
+import com.ty.hospitalapp.entity.Observation;
+import com.ty.hospitalapp.service.ObservationService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ObservationController {
+
+    private final ObservationService service;
+
+    public ObservationController(ObservationService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/encounters/{eid}/observations")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Observation save(@PathVariable("eid") int eid, @RequestBody Observation observation) {
+        return service.save(eid, observation);
+    }
+
+    @GetMapping("/encounters/{eid}/observations")
+    public List<Observation> getByEncounter(@PathVariable("eid") int eid) {
+        return service.getByEncounter(eid);
+    }
+
+    @GetMapping("/observations")
+    public List<Observation> getAll() {
+        return service.getAll();
+    }
+
+    @GetMapping("/observations/{id}")
+    public Observation get(@PathVariable("id") int id) {
+        return service.get(id);
+    }
+
+    @PutMapping("/observations/{id}")
+    public Observation update(@PathVariable("id") int id, @RequestBody Observation observation) {
+        return service.update(id, observation);
+    }
+
+    @DeleteMapping("/observations/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") int id) {
+        service.delete(id);
+    }
+
+    @GetMapping("/observations/doctor/{name}")
+    public List<Observation> getByDoctor(@PathVariable("name") String name) {
+        return service.getByDoctor(name);
+    }
+}
