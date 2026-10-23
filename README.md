@@ -16,6 +16,7 @@ A REST API for managing hospitals, branches, patients, visits, doctor notes and 
 - Global exception handler returning clean JSON errors (400, 404)
 - Search endpoints (patients by gender, age or phone; orders by doctor or date; users by name or role)
 - User passwords are accepted when saving but never returned in responses
+- Swagger UI (springdoc-openapi) for interactive API documentation and testing
 
 ## Database Design
 Hospital -> Branch -> Address (one to one)
@@ -35,6 +36,7 @@ Tables are created automatically by Hibernate when the app starts.
    (If your MySQL user is not `root`, also add `spring.datasource.username=YOUR_USER`.)
 4. Run `HospitalappApplication` from your IDE, or run `mvnw spring-boot:run`.
 5. The API starts at `http://localhost:8080`. The database `hospitaldb` is created automatically.
+6. Open `http://localhost:8080/swagger-ui/index.html` to try every endpoint in the browser.
 
 ## API Endpoints
 
@@ -61,7 +63,6 @@ curl -X POST http://localhost:8080/hospitals -H "Content-Type: application/json"
 ```
 
 ## Planned Improvements
-- Swagger/OpenAPI documentation
 - Front end with HTML, CSS and JavaScript
 - JDBC based reports
 - Unit tests with JUnit and Mockito
