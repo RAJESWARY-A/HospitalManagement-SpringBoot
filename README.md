@@ -17,7 +17,7 @@ A REST API for managing hospitals, branches, patients, visits, doctor notes and 
 - Search endpoints (patients by gender, age or phone; orders by doctor or date; users by name or role)
 - User passwords are accepted when saving but never returned in responses
 - Swagger UI (springdoc-openapi) for interactive API documentation and testing
-
+- Simple web front end (HTML, CSS, JavaScript) to add, edit and delete hospitals at `http://localhost:8080`
 ## Database Design
 Hospital -> Branch -> Address (one to one)
 Branch -> Encounter <- Person (a visit links one patient to one branch)
@@ -63,7 +63,7 @@ curl -X POST http://localhost:8080/hospitals -H "Content-Type: application/json"
 ```
 
 ## Planned Improvements
-- Front end with HTML, CSS and JavaScript
+- More front end screens (branches, patients, visits)
 - JDBC based reports
 - Unit tests with JUnit and Mockito
 - Login with Spring Security
