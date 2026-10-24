@@ -1,0 +1,40 @@
+:root {
+  --ink: #17324d;
+  --teal: #0f766e;
+  --teal-dark: #0b5a54;
+  --mist: #eef4f3;
+  --line: #cfdcda;
+  --alert: #b4362a;
+  --alert-bg: #fbeceb;
+  --ok: #1f6b3a;
+  --ok-bg: #e6f3ea;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", Tahoma, Arial, sans-serif; color: var(--ink); background: var(--mist); line-height: 1.5; }
+header { background: var(--teal); color: #fff; padding: 14px 24px; }
+header h1 { margin: 0; font-size: 1.4rem; font-weight: 600; }
+nav { margin-top: 8px; display: flex; gap: 18px; }
+nav a { color: #fff; text-decoration: none; padding-bottom: 2px; opacity: .85; }
+nav a[aria-current] { opacity: 1; border-bottom: 2px solid #fff; }
+main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+section { background: #fff; border: 1px solid var(--line); padding: 18px; margin-bottom: 20px; }
+h2 { margin: 0 0 12px; font-size: 1.1rem; }
+form { display: flex; gap: 8px; flex-wrap: wrap; }
+input, select { flex: 1; min-width: 150px; padding: 9px 10px; border: 1px solid var(--line); font: inherit; color: inherit; background: #fff; }
+input:focus, select:focus, button:focus-visible { outline: 3px solid #7cc4bd; outline-offset: 1px; }
+button { padding: 9px 16px; border: 0; background: var(--teal); color: #fff; font: inherit; cursor: pointer; }
+button:hover { background: var(--teal-dark); }
+button.plain { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+button.plain:hover { background: var(--mist); }
+button.danger { background: #fff; color: var(--alert); border: 1px solid var(--alert); }
+button.danger:hover { background: var(--alert-bg); }
+.msg { margin-top: 12px; padding: 9px 12px; display: none; }
+.msg.error { display: block; background: var(--alert-bg); color: var(--alert); }
+.msg.ok { display: block; background: var(--ok-bg); color: var(--ok); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; }
+td.actions { white-space: nowrap; text-align: right; }
+td.actions button { margin-left: 6px; padding: 5px 12px; }
+.empty { padding: 14px 8px; color: #4b6275; display: none; }

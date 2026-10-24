@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Manager - Branches</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Hospital Manager</h1>
+  <nav>
+    <a href="index.html">Hospitals</a>
+    <a href="branches.html" aria-current="page">Branches</a>
+    <a href="patients.html">Patients</a>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2 id="formTitle"></h2>
+    <form id="form"></form>
+    <div id="msg" class="msg" role="status"></div>
+  </section>
+  <section>
+    <h2>Branches</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr id="head"></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div id="empty" class="empty">No branches yet. Pick a hospital above and add the first branch.</div>
+  </section>
+</main>
+<script src="app.js"></script>
+<script>
+crudPage({
+  name: "branch",
+  parent: { url: "/hospitals", idKey: "hid", labelKey: "name", label: "Hospital" },
+  listUrl: "/branches",
+  createUrl: hid => "/hospitals/" + hid + "/branches",
+  itemUrl: id => "/branches/" + id,
+  idKey: "bid",
+  deleteWarning: "Its address and visits are deleted too.",
+  fields: [
+    { key: "name", label: "Branch name" },
+    { key: "phone", label: "Phone", type: "number" },
+    { key: "email", label: "Email" },
+    { key: "address.street", label: "Street" },
+    { key: "address.state", label: "State" },
+    { key: "address.country", label: "Country" },
+    { key: "address.pin", label: "PIN code", type: "number" }
+  ],
+  columns: [
+    { key: "bid", label: "ID" },
+    { key: "name", label: "Name" },
+    { key: "phone", label: "Phone" },
+    { key: "email", label: "Email" },
+    { key: "address.street", label: "Street" },
+    { key: "address.state", label: "State" }
+  ]
+});
+</script>
+</body>
+</html>

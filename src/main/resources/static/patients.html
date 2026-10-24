@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Manager - Patients</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Hospital Manager</h1>
+  <nav>
+    <a href="index.html">Hospitals</a>
+    <a href="branches.html">Branches</a>
+    <a href="patients.html" aria-current="page">Patients</a>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2 id="formTitle"></h2>
+    <form id="form"></form>
+    <div id="msg" class="msg" role="status"></div>
+  </section>
+  <section>
+    <h2>Patients</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr id="head"></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div id="empty" class="empty">No patients yet. Add the first one above.</div>
+  </section>
+</main>
+<script src="app.js"></script>
+<script>
+crudPage({
+  name: "patient",
+  listUrl: "/persons",
+  createUrl: () => "/persons",
+  itemUrl: id => "/persons/" + id,
+  idKey: "pid",
+  deleteWarning: "Their visits are deleted too.",
+  fields: [
+    { key: "name", label: "Patient name" },
+    { key: "age", label: "Age", type: "number" },
+    { key: "gender", label: "Gender" },
+    { key: "phone", label: "Phone", type: "number" },
+    { key: "dob", label: "Date of birth", type: "date" },
+    { key: "email", label: "Email" },
+    { key: "address", label: "Address" }
+  ],
+  columns: [
+    { key: "pid", label: "ID" },
+    { key: "name", label: "Name" },
+    { key: "age", label: "Age" },
+    { key: "gender", label: "Gender" },
+    { key: "phone", label: "Phone" },
+    { key: "email", label: "Email" }
+  ]
+});
+</script>
+</body>
+</html>
