@@ -18,6 +18,9 @@ A REST API for managing hospitals, branches, patients, visits, doctor notes and 
 - User passwords are accepted when saving but never returned in responses
 - Swagger UI (springdoc-openapi) for interactive API documentation and testing
 - Simple web front end (HTML, CSS, JavaScript) to add, edit and delete hospitals at `http://localhost:8080`
+-   - JDBC reports using JdbcTemplate with SQL joins and GROUP BY: `GET /reports/visits-per-branch` and `GET /reports/medicine-cost`
+
+
 ## Database Design
 Hospital -> Branch -> Address (one to one)
 Branch -> Encounter <- Person (a visit links one patient to one branch)
@@ -51,6 +54,7 @@ Tables are created automatically by Hibernate when the app starts.
 | Medicine order | `POST, GET /encounters/{eid}/medorders`, `GET, PUT, DELETE /medorders/{id}` |
 | Item | `POST, GET /medorders/{mid}/items`, `GET, PUT, DELETE /items/{id}` |
 | User | `POST, GET /users`, `GET, PUT, DELETE /users/{id}` |
+| Reports (JDBC) | `GET /reports/visits-per-branch`, `GET /reports/medicine-cost` |
 
 ### Example request
 ```
@@ -64,7 +68,6 @@ curl -X POST http://localhost:8080/hospitals -H "Content-Type: application/json"
 
 ## Planned Improvements
 - More front end screens (branches, patients, visits)
-- JDBC based reports
 - Unit tests with JUnit and Mockito
 - Login with Spring Security
 
